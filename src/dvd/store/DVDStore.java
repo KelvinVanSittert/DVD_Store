@@ -15,6 +15,7 @@ public class DVDStore {
     
     private static ArrayList<Dvd> dvdArrayList = new ArrayList();
     private static ArrayList<Customer> customerArrayList = new ArrayList();
+    private static ArrayList<Rental> rentalArrayList = new ArrayList();
     
 
         public static void main(String args[]) {
@@ -82,6 +83,14 @@ public static void setDvdArrayList(ArrayList<Dvd> newDvdArrayList){
 public static void setCustomerArrayList(ArrayList<Customer> newCustomerArrayList){
     
     customerArrayList = newCustomerArrayList;
+}
+
+public static void setRentalArrayList(ArrayList<Rental> newRentalArrayList){
+    rentalArrayList = newRentalArrayList;
+}
+
+public static ArrayList<Rental> getRentalArrayList(){
+    return rentalArrayList;
 }
     
 }

@@ -6,9 +6,10 @@
 package dvd.store;
 
 import static dvd.store.DVDStore.getCustomerArrayList;
+import static dvd.store.DVDStore.getDvdArrayList;
+import static dvd.store.DVDStore.getRentalArrayList;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import static dvd.store.DVDStore.getDvdArrayList;
 
 /**
  *
@@ -243,18 +244,33 @@ public class MainMenu extends javax.swing.JFrame {
         
         if (sortedComboBox.getSelectedItem().equals("Available Movies")) {
             
-            textPlaceholder = "";
-            textArea.setText(null);
+                    textPlaceholder = "";
+                    textArea.setText(null);
+            
+            ArrayList<Dvd> dvdCopy = new ArrayList();
         
             for (int i = 0; i < getDvdArrayList().size(); i++) {
+                dvdCopy.add(getDvdArrayList().get(i));
+            }
+            
+                for (int i = 0; i < getDvdArrayList().size(); i++) {
+                    for (int j = 0; j < getRentalArrayList().size(); j++) {
+                        if (getDvdArrayList().get(i).getDvdNumber() == getRentalArrayList().get(j).getDvdNumber()) {
+                        dvdCopy.remove(i);
+                        }
                     
+                    }
                     
                 
-                textPlaceholder = textPlaceholder + getDvdArrayList().get(i).toString() + "\n \n";
-        
-        }
-            textArea.setText(textPlaceholder);
+                }
+                
+        for (int i = 0; i < dvdCopy.size(); i++) {
             
+            textPlaceholder = textPlaceholder + dvdCopy.get(i).toString() + "\n \n";
+            
+        }
+
+            textArea.setText(textPlaceholder);
         }
         
         if (sortedComboBox.getSelectedItem().equals("Customers")) {
