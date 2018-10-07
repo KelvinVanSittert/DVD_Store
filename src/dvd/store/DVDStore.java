@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DVDStore {
     
-    private static ArrayList<Dvd> dvdArrayList = new ArrayList();
+    private static ArrayList<DVD> dvdArrayList = new ArrayList();
     private static ArrayList<Customer> customerArrayList = new ArrayList();
     private static ArrayList<Rental> rentalArrayList = new ArrayList();
     
@@ -55,29 +55,29 @@ public static void newCustomer(Customer newCustomer){
     customerArrayList.add(newCustomer);
            
 }
-public static void newDvd(Dvd newDvd){
-    dvdArrayList.add(newDvd);
+public static void newDVD(DVD newDVD){
+    dvdArrayList.add(newDVD);
            
 }
 
-public static void deleteDvd(int deletedDvd){
-    dvdArrayList.remove(deletedDvd);
+public static void deleteDVD(int deletedDVD){
+    dvdArrayList.remove(deletedDVD);
 }
 
 public static void deleteCustomer(int deletedCustomer){
     customerArrayList.remove(deletedCustomer);
 }
         
-public static ArrayList<Dvd> getDvdArrayList(){
-    return dvdArrayList;
+public static ArrayList<DVD> getDVDArrayList(){
+    return ServerProxy.GetDVDs();
 }
 public static ArrayList<Customer> getCustomerArrayList(){
     return customerArrayList;
 }
 
-public static void setDvdArrayList(ArrayList<Dvd> newDvdArrayList){
+public static void setDVDArrayList(ArrayList<DVD> newDVDArrayList){
     
-    dvdArrayList = newDvdArrayList;
+    dvdArrayList = newDVDArrayList;
 }
 
 public static void setCustomerArrayList(ArrayList<Customer> newCustomerArrayList){

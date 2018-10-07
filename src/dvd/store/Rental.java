@@ -46,7 +46,7 @@ public class Rental  implements Serializable
         this.dvdNumber = dvdNumber;
         
     }
-    public int getDvdNumber()
+    public int getDVDNumber()
     {
         return this.dvdNumber;        
     }
