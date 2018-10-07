@@ -9,91 +9,91 @@ package dvd.store;
  *
  * @author Kelvin
  */
-public class Customer {
-    
+import java.io.*;
+public class Customer implements Serializable
+{
+    private int custNumber;
     private String firstName;
     private String surname;
-    private String phoneNumber;
+    private String phoneNum;
     private double credit;
     private boolean canRent;
-    private String movieRented;
     
-    public Customer(){
+    public Customer()
+    {
         
     }
     
-    public Customer(String newFirstName, String newSurname, String newPhoneNumber, double newCredit, boolean newCanRent){
-        
-    firstName = newFirstName;
-    surname = newSurname;
-    phoneNumber = newPhoneNumber;
-    credit = newCredit;
-    canRent = newCanRent;
-        
+    public Customer(int custNumber, String fName, String lName, String phone, double credAmt, boolean can)
+    {
+        setCustNumber(custNumber);
+        setName(fName);
+        setSurname(lName);
+        setPhoneNum(phone);
+        setCredit(credAmt);
+        setCanRent(can);
     }
     
-    public void setMovieRented(String newMovieRented){
-        movieRented = newMovieRented;
+    public void setCustNumber(int custNumber)  {
+    	this.custNumber = custNumber;
     }
     
-    public void setFirstName(String newFirstName){
-    firstName = newFirstName;
-    
+    public void setName(String sFName)
+    {
+        firstName = sFName;
     }
     
-    public void setSurname(String newSurname){
-    surname = newSurname;
-    
+    public void setSurname(String sSName)
+    {
+        surname = sSName;
     }
     
-    public void setPhoneNumber(String newPhoneNumber){
-    phoneNumber = newPhoneNumber;
-    
+    public void setPhoneNum(String sPhone)
+    {
+        phoneNum = sPhone;
     }
     
-    public void setCredit(double newCredit){
-    credit = newCredit;
-    
+    public void setCredit(double sCredAmt)
+    {
+        credit = sCredAmt;
+    }
+    public void setCanRent(boolean can)
+    {
+        canRent = can;
     }
     
-    public void setCanRent(boolean newCanRent){
-    canRent = newCanRent;
-    
+    public int getCustNumber()  {
+    	return custNumber;
+    }
+    public boolean canRent()  {
+    	return canRent;
     }
     
-    public String getMovieRented(){
-        return movieRented;
-    }
-    
-    public String getFirstName(){
+    public String getName()
+    {
         return firstName;
     }
     
-    public String getSurname(){
+    public String getSurname()
+    {
         return surname;
     }
     
-    public String getPhoneNumber(){
-        return phoneNumber;
+    public String getPhoneNum()
+    {
+        return phoneNum;
     }
     
-    public double getCredit(){
+    public double getCredit()
+    {
         return credit;
     }
     
-    public boolean canRent(){
-        return canRent;
-    }
-    
-    
-    
+    //this method can be edited to format strings differently
     @Override
-    public String toString(){
-        return "First Name: " + firstName + "\nSurname: " + surname + "\nPhone Number: " + phoneNumber + "\nCredit: " + credit + "\nCan Rent: " + canRent;
-    }
-    
-    public void addCredit(double newCredit){
-        credit = credit + newCredit;
-    }
-    
+    public String toString()
+    {
+        return String.format("%-8d%-10s%-10s%-10s     %.2f\t%-6b", getCustNumber(), getName(), getSurname(),
+                getPhoneNum(), getCredit(), canRent);
+    }      
 }
