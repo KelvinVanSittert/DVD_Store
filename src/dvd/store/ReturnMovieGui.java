@@ -25,12 +25,12 @@ public class ReturnMovieGui extends javax.swing.JFrame {
         movieComboBox.removeAllItems();
         movieComboBox.addItem("Select movie to return");
         
-        ArrayList<Dvd> dvdCopy = new ArrayList();
+        ArrayList<DVD> dvdCopy = new ArrayList();
             for (int i = 0; i < getDvdArrayList().size(); i++) {
                 dvdCopy.add(getDvdArrayList().get(i));
             }
            
-        ArrayList<Dvd> rentedDvd = new ArrayList();
+        ArrayList<DVD> rentedDvd = new ArrayList();
                 
                 for (int j = 0; j < getDvdArrayList().size(); j++) {
                     for (int k = 0; k < getRentalArrayList().size(); k++) {

@@ -232,8 +232,8 @@ public class AddGui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "You can only store up to 10 Dvd's");
         }else{
   
-         //public Dvd(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
-    Dvd dvd = new Dvd(Integer.parseInt(JOptionPane.showInputDialog("PLEASE ENTER PRIMARY KEY")), movieTitleTf.getText(), addMovieCombo.getSelectedIndex()+1, newReleaseCheckBox.isSelected(), true);
+         //public DVD(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
+    DVD dvd = new DVD(Integer.parseInt(JOptionPane.showInputDialog("PLEASE ENTER PRIMARY KEY")), movieTitleTf.getText(), addMovieCombo.getSelectedIndex()+1, newReleaseCheckBox.isSelected(), true);
     newDvd(dvd);
         }
     movieTitleTf.setText(null);

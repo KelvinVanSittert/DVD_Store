@@ -10,7 +10,9 @@ package dvd.store;
  * @author Kelvin
  */
 import java.io.*;
-public class Dvd implements Serializable
+
+public class DVD implements Serializable
+
 {
     private int dvdNumber;
     private String title;
@@ -20,13 +22,17 @@ public class Dvd implements Serializable
     private boolean availableForRent;
     
     //empty constructor
-    public Dvd()
+
+    public DVD()
+
     {
         
     }
     
     //constructor that takes 4 arguments to initialize the instance variables
-    public Dvd(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
+
+    public DVD(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
+
     {
         setDvdNumber(dvdNumber);
         setTitle(title);
