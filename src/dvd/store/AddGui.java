@@ -231,11 +231,9 @@ public class AddGui extends javax.swing.JFrame {
         if (getDvdArrayList().size() > 9) {
             JOptionPane.showMessageDialog(null, "You can only store up to 10 Dvd's");
         }else{
-    double dvdPrice = 10;
-        if (newReleaseCheckBox.isSelected()) {
-            dvdPrice = 15;
-        }
-    Dvd dvd = new Dvd(movieTitleTf.getText(), addMovieCombo.getSelectedItem().toString(), newReleaseCheckBox.isSelected(), dvdPrice, true);
+  
+         //public Dvd(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
+    Dvd dvd = new Dvd(Integer.parseInt(JOptionPane.showInputDialog("PLEASE ENTER PRIMARY KEY")), movieTitleTf.getText(), addMovieCombo.getSelectedIndex()+1, newReleaseCheckBox.isSelected(), true);
     newDvd(dvd);
         }
     movieTitleTf.setText(null);
@@ -244,14 +242,15 @@ public class AddGui extends javax.swing.JFrame {
 
     private void submitCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitCustomerBtnActionPerformed
             
-        if(getCustomerArrayList().size() > 9 ){
+        
         if (Double.parseDouble(creditTf.getText()) > 99 && phoneNumberTf.getText().length()== 10) {
-            Customer customer = new Customer(firstNameTf.getText(), surnameTf.getText(), phoneNumberTf.getText(), Double.parseDouble(creditTf.getText()), true);
+            //int custNumber, String fName, String lName, String phone, double credAmt, boolean can
+            Customer customer = new Customer(Integer.parseInt(JOptionPane.showInputDialog("Please enter primary key")),firstNameTf.getText(), surnameTf.getText(), phoneNumberTf.getText(), Double.parseDouble(creditTf.getText()), true);
             newCustomer(customer);
         }else{
             JOptionPane.showMessageDialog(null, "Please enter a valid phone number and more than R100 credit");
         }
-        }
+        
     firstNameTf.setText(null);
     surnameTf.setText(null);
     phoneNumberTf.setText(null);
