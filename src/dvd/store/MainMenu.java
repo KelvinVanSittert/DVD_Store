@@ -227,15 +227,16 @@ public class MainMenu extends javax.swing.JFrame {
     private void sortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortBtnActionPerformed
        
         String textPlaceholder = "";
-        
+        ArrayList<DVD> dvds = getDVDArrayList();
         if (sortedComboBox.getSelectedItem().equals("All Movies")) {
             
             textPlaceholder = "";
             textArea.setText(null);
             
-            for (int i = 0; i < getDVDArrayList().size(); i++) {
+            for (int i = 0; i < dvds.size(); i++) {
                 
-                textPlaceholder = textPlaceholder + getDVDArrayList().get(i).toString() + "\n \n";
+                
+                textPlaceholder = textPlaceholder + dvds.get(i).toString() + "\n \n";
                 
             }
             
@@ -250,13 +251,13 @@ public class MainMenu extends javax.swing.JFrame {
             
             ArrayList<DVD> dvdCopy = new ArrayList();
         
-            for (int i = 0; i < getDVDArrayList().size(); i++) {
-                dvdCopy.add(getDVDArrayList().get(i));
+            for (int i = 0; i < dvds.size(); i++) {
+                dvdCopy.add(dvds.get(i));
             }
             
-                for (int i = 0; i < getDVDArrayList().size(); i++) {
+                for (int i = 0; i < dvds.size(); i++) {
                     for (int j = 0; j < getRentalArrayList().size(); j++) {
-                        if (getDVDArrayList().get(i).getDVDNumber() == getRentalArrayList().get(j).getDVDNumber()) {
+                        if (dvds.get(i).getDVDNumber() == getRentalArrayList().get(j).getDVDNumber()) {
                         dvdCopy.remove(i);
                         }
                     
