@@ -22,7 +22,7 @@ public class DeleteGui extends javax.swing.JFrame {
         
         initComponents();
         
-        ArrayList<Dvd> dvdsArrayList = new ArrayList(getDvdArrayList());
+        ArrayList<DVD> dvdsArrayList = new ArrayList(getDvdArrayList());
         movieComboBox.removeAllItems();
         
         for (int i = 0; i < getDvdArrayList().size(); i++) {

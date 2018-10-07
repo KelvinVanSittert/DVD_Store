@@ -13,10 +13,9 @@ import java.util.ArrayList;
  */
 public class DVDStore {
     
-    private static ArrayList<Dvd> dvdArrayList = new ArrayList();
+    private static ArrayList<DVD> dvdArrayList = new ArrayList();
     private static ArrayList<Customer> customerArrayList = new ArrayList();
     private static ArrayList<Rental> rentalArrayList = new ArrayList();
-    
 
         public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -55,7 +54,7 @@ public static void newCustomer(Customer newCustomer){
     customerArrayList.add(newCustomer);
            
 }
-public static void newDvd(Dvd newDvd){
+public static void newDvd(DVD newDvd){
     dvdArrayList.add(newDvd);
            
 }
@@ -68,14 +67,14 @@ public static void deleteCustomer(int deletedCustomer){
     customerArrayList.remove(deletedCustomer);
 }
         
-public static ArrayList<Dvd> getDvdArrayList(){
-    return dvdArrayList;
+public static ArrayList<DVD> getDvdArrayList(){
+    return ServerProxy.GetDvds();
 }
 public static ArrayList<Customer> getCustomerArrayList(){
     return customerArrayList;
 }
 
-public static void setDvdArrayList(ArrayList<Dvd> newDvdArrayList){
+public static void setDvdArrayList(ArrayList<DVD> newDvdArrayList){
     
     dvdArrayList = newDvdArrayList;
 }

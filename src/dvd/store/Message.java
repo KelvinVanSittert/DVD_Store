@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Jarrod
+ * @author Jaco
  */
 public class Message implements Serializable {
     private static final long serialVersionUID = -5399605122490343339L;
@@ -36,8 +36,16 @@ public class Message implements Serializable {
         Rental
     }
     
-    public Message(ArrayList<Customer> customers, Action action, Target target, String statement ){
-        this.Customers = customers; 
+    
+    public <E> Message(ArrayList<E> list, Action action, Target target, String statement ){
+        
+        if(target == Target.Customer)
+           this.Customers = (ArrayList<Customer>)list;
+        if(target == Target.DVD)
+           this.DVDs = (ArrayList<DVD>)list; 
+        if(target == Target.Rental)
+           this.Rentals = (ArrayList<Rental>)list; 
+
         this.ActionToPerform = action;
         this.TargetToPerformActionTo = target;
         this.Statement = statement;
@@ -50,22 +58,8 @@ public class Message implements Serializable {
         this.Statement = statement;
     }
     
-    public Message(ArrayList<DVD> dvds, Action action, Target target, String statement ){
-        this.DVDs = dvds; 
-        this.ActionToPerform = action;
-        this.TargetToPerformActionTo = target;
-        this.Statement = statement;
-    }
-    
     public Message(DVD dvd, Action action, Target target, String statement ){
         this.Dvd = dvd; 
-        this.ActionToPerform = action;
-        this.TargetToPerformActionTo = target;
-        this.Statement = statement;
-    }
-    
-    public Message(ArrayList<Rental> rentals, Action action, Target target, String statement ){
-        this.Rentals = rentals; 
         this.ActionToPerform = action;
         this.TargetToPerformActionTo = target;
         this.Statement = statement;
@@ -87,4 +81,5 @@ public class Message implements Serializable {
     public Action getAction() { return ActionToPerform; }
     public Target getTarget() { return TargetToPerformActionTo; }
     public String getStatement() { return Statement; }
+
 }

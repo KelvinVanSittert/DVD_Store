@@ -15,10 +15,10 @@ import java.net.Socket;
 
 /**
  *
- * @author Jarrod
+ * @author Jaco
  */
 public class ServerProxy {
-    private Socket server;
+    private static Socket server;
     
     public ServerProxy()
     {
@@ -26,7 +26,7 @@ public class ServerProxy {
         try
         {
             // Create socket
-            server = new Socket("127.0.0.1", 12345);
+            server = new Socket("10.0.0.7", 12345);
         }
         catch (IOException ioe)
         {
@@ -38,7 +38,7 @@ public class ServerProxy {
      *
      * @param customer
      */
-    public void UpdateCustomer(Customer customer)
+    public static void UpdateCustomer(Customer customer)
     {
         try
         {        
@@ -49,7 +49,8 @@ public class ServerProxy {
             String updateStmt = "update Customers set credit = " + customer.getCredit() + ", canRent = " + customer.canRent() +
                     " where custNum = " + customer.getCustNumber();
             // Step 2: communicate
-            out.writeObject(updateStmt);
+            Message msg = new Message(customer, Message.Action.Update, Message.Target.Customer, updateStmt);
+            out.writeObject(msg);
             out.flush();
             String response = (String)in.readObject();
             System.out.println("From SERVER>> " + response);
@@ -67,5 +68,37 @@ public class ServerProxy {
         {
             System.out.println("Class not found: " + cnfe.getMessage());
         }
+    }
+    
+    public static ArrayList<DVD> GetDvds(){
+        ArrayList<DVD> dvds = new ArrayList<DVD>();
+        try
+        {        
+            // Step 1: create channels
+            ObjectOutputStream out = new ObjectOutputStream(server.getOutputStream());
+            out.flush();
+            ObjectInputStream in = new ObjectInputStream(server.getInputStream());
+            String statement = "select * from Movies";
+            // Step 2: communicate
+            Message msg = new Message(new ArrayList<DVD>(), Message.Action.Get, Message.Target.DVD, statement);
+            out.writeObject(msg);
+            out.flush();
+            msg = (Message)in.readObject();
+            System.out.println("From SERVER>> Success");
+            dvds = msg.getDVDs();
+            // Step 3: close down
+            out.close();
+            in.close();
+            server.close();        
+        }
+        catch (IOException ioe)
+        {
+            System.out.println("IO Exception: " + ioe.getMessage());
+        }
+        catch (ClassNotFoundException cnfe)
+        {
+            System.out.println("Class not found: " + cnfe.getMessage());
+        }
+        return dvds;
     }
 }

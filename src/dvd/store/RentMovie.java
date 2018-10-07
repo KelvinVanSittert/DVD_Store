@@ -325,7 +325,7 @@ public class RentMovie extends javax.swing.JFrame {
         textArea.setText(null);
         boolean flag;
             
-        ArrayList<Dvd> dvdCopy = new ArrayList();
+        ArrayList<DVD> dvdCopy = new ArrayList();
         
         for (int i = 0; i < getDvdArrayList().size(); i++) {
             dvdCopy.add(getDvdArrayList().get(i));

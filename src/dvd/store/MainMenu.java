@@ -20,13 +20,14 @@ public class MainMenu extends javax.swing.JFrame {
     
     
     
-
+    ServerProxy proxy;
     /**
      * Creates new form Gui
      */
     public MainMenu() {
         
         initComponents();
+        proxy = new ServerProxy();
     }
 
     /**
@@ -169,6 +170,8 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -227,6 +230,8 @@ public class MainMenu extends javax.swing.JFrame {
        
         String textPlaceholder = "";
         
+        
+        
         if (sortedComboBox.getSelectedItem().equals("All Movies")) {
             
             textPlaceholder = "";
@@ -247,7 +252,7 @@ public class MainMenu extends javax.swing.JFrame {
                     textPlaceholder = "";
                     textArea.setText(null);
             
-            ArrayList<Dvd> dvdCopy = new ArrayList();
+            ArrayList<DVD> dvdCopy = new ArrayList();
         
             for (int i = 0; i < getDvdArrayList().size(); i++) {
                 dvdCopy.add(getDvdArrayList().get(i));
