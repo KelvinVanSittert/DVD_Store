@@ -69,7 +69,7 @@ public static void deleteCustomer(int deletedCustomer){
 }
         
 public static ArrayList<DVD> getDVDArrayList(){
-    return dvdArrayList;
+    return ServerProxy.GetDVDs();
 }
 public static ArrayList<Customer> getCustomerArrayList(){
     return customerArrayList;

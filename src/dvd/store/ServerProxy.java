@@ -59,7 +59,7 @@ public class ServerProxy {
             // Step 3: close down
             out.close();
             in.close();
-            server.close();        
+              
         }
         catch (IOException ioe)
         {
@@ -80,7 +80,7 @@ public class ServerProxy {
             out.flush();
             ObjectInputStream in = new ObjectInputStream(server.getInputStream());
             String updateStmt = "INSERT INTO Customers(custNumber, firstName, surname, phoneNum ,credit, canRent)" 
-                    + " VALUES ("+customer.getCustNumber()+","+customer.getName()+","+customer.getSurname()+","+customer.getPhoneNum()+","+customer.getCredit()+","+customer.canRent()+")";
+                    + " VALUES ("+customer.getCustNumber()+",'"+customer.getName()+"','"+customer.getSurname()+"','"+customer.getPhoneNum()+"',"+customer.getCredit()+","+customer.canRent()+")";
                    
             // Step 2: communicate
             Message msg = new Message(customer, Message.Action.Insert, Message.Target.Customer, updateStmt);
@@ -189,10 +189,11 @@ public class ServerProxy {
             msg = (Message)in.readObject();
             System.out.println("From SERVER>> Success");
             dvds = msg.getDVDs();
+            System.out.println("From SERVER>> Success DVDS:" + dvds.size());
             // Step 3: close down
             out.close();
             in.close();
-            server.close();        
+          
         }
         catch (IOException ioe)
         {

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Jaco
  */
 public class Message implements Serializable {
-    private static final long serialVersionUID = -5399605122490343339L;
+    private static final long serialVersionUID = 1L;
 
     private ArrayList<Customer> Customers;
     private ArrayList<DVD> DVDs;
@@ -22,7 +22,7 @@ public class Message implements Serializable {
     private Rental Rental;
     private Action ActionToPerform;
     private Target TargetToPerformActionTo;
-    private String Statement;
+    private String Statement;   
     
     public enum Action {
         Update,
@@ -81,5 +81,15 @@ public class Message implements Serializable {
     public Action getAction() { return ActionToPerform; }
     public Target getTarget() { return TargetToPerformActionTo; }
     public String getStatement() { return Statement; }
+    
+    public void setCustomers(ArrayList<Customer> customers) { this.Customers = customers;};
+    public void setDVDs(ArrayList<DVD> dVDs) { this.DVDs = dVDs;};
+    public void setRentals(ArrayList<Rental> rentals) { this.Rentals = rentals;};
+    public void setCustomer(Customer customer) { this.Customer = customer; }
+    public void setDVD(DVD dVD) { this.DVD = dVD ; }
+    public void setRental(Rental rental) { this.Rental = rental; }
+    public void setAction(Action action) { this.ActionToPerform = action; }
+    public void setTarget(Target target) { this.TargetToPerformActionTo = target; }
+    public void setStatement(String statement) { this.Statement = statement; }
 
 }
