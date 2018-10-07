@@ -6,6 +6,7 @@
 package dvd.store;
 import static dvd.store.DVDStore.*;
 import javax.swing.JOptionPane;
+import java.util.*;
 /**
  *
  * @author Kelvin
@@ -40,10 +41,18 @@ public class RentMovie extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        customerPhoneNumberTf = new javax.swing.JTextField();
+        customerPrimaryKeyTf = new javax.swing.JTextField();
         rentBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         addCreditBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        dayComboBox = new javax.swing.JComboBox<>();
+        monthComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        yearComboBox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setTitle("Rent a movie");
 
@@ -65,7 +74,7 @@ public class RentMovie extends javax.swing.JFrame {
         textArea.setRows(5);
         jScrollPane1.setViewportView(textArea);
 
-        jLabel3.setText("Enter phone number");
+        jLabel3.setText("Customer Primary Key");
 
         rentBtn.setText("Rent");
         rentBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +97,22 @@ public class RentMovie extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Date Rented");
+
+        dayComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        monthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+
+        jLabel2.setText("20");
+
+        yearComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99" }));
+
+        jLabel4.setText("Day");
+
+        jLabel5.setText("Month");
+
+        jLabel6.setText("Year");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,13 +120,6 @@ public class RentMovie extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(54, 54, 54)
-                        .addComponent(customerPhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(addCreditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(viewAvailableBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -111,7 +129,32 @@ public class RentMovie extends javax.swing.JFrame {
                                 .addComponent(rentBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(backBtn)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(customerPrimaryKeyTf, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addGap(46, 46, 46)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel6))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(addCreditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,12 +164,24 @@ public class RentMovie extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(customerPhoneNumberTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerPrimaryKeyTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addCreditBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(6, 6, 6)
                 .addComponent(viewAvailableBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rentBtn)
@@ -148,7 +203,37 @@ public class RentMovie extends javax.swing.JFrame {
     }//GEN-LAST:event_selectMovieComboBoxActionPerformed
 
     private void rentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentBtnActionPerformed
-        boolean movieReady = false;
+        
+        //int  rentalNumber, String dateRented, int custNumber , int dvdNumber
+        boolean validated = false;
+        int dvdPrimaryKey = 0;
+        ArrayList<Rental> newRentalArrayList = getRentalArrayList();
+        String dateRented = (Integer.toString(yearComboBox.getSelectedIndex()+1)) + "/" + (Integer.toString(monthComboBox.getSelectedIndex()+1)) + "/" + (Integer.toString(dayComboBox.getSelectedIndex()+1));
+        int customerPrimaryKey = Integer.parseInt(customerPrimaryKeyTf.getText());
+        
+        
+        
+        String movieSelected = selectMovieComboBox.getSelectedItem().toString();
+        
+        for (int i = 0; i < getDvdArrayList().size(); i++) {
+            
+            if (getDvdArrayList().get(i).getTitle().equals(movieSelected)) {
+                dvdPrimaryKey = getDvdArrayList().get(i).getDvdNumber();
+                validated = true;
+            }
+        
+        }
+        
+        if (validated) {
+            int rentalKey = Integer.parseInt(JOptionPane.showInputDialog("Please enter primary key for rental"));
+            newRentalArrayList.add(new Rental(rentalKey, dateRented, customerPrimaryKey, dvdPrimaryKey));
+            setRentalArrayList(newRentalArrayList);
+        }
+
+        
+        
+        
+        /*boolean movieReady = false;
         boolean customerReady = false;
         int whichCustomer = 0;
         int whichDvd = 0;
@@ -184,15 +269,30 @@ public class RentMovie extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Please enter a valid customer number and select a movie");
         }
-        
+        */
     }//GEN-LAST:event_rentBtnActionPerformed
 
     private void addCreditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCreditBtnActionPerformed
         boolean flag = false;
-        if(customerPhoneNumberTf.getText().length() > 9 && customerPhoneNumberTf.getText().length() < 11){
+        
+        int customerPrimaryKey = Integer.parseInt(customerPrimaryKeyTf.getText());
+        
+        
+        for (int i = 0; i < getCustomerArrayList().size(); i++) {
+            if (customerPrimaryKey == getCustomerArrayList().get(i).getCustNumber()) {
+                double addAmount = Double.parseDouble(JOptionPane.showInputDialog("How much do you want to add?"));
+                getCustomerArrayList().get(i).setCredit(getCustomerArrayList().get(i).getCredit() + addAmount);
+                
+            }else{
+                JOptionPane.showMessageDialog(null,"That customer does not exist");
+                customerPrimaryKeyTf.setText("");
+            }
+        }
+        /*
+        if(customerPrimaryKeyTf.getText().length() > 9 && customerPrimaryKeyTf.getText().length() < 11){
         
             for (int i = 0; i < getCustomerArrayList().size(); i++) {
-                if (getCustomerArrayList().get(i).getPhoneNumber().equals(customerPhoneNumberTf.getText())) {
+                if (getCustomerArrayList().get(i).getPhoneNumber().equals(customerPrimaryKeyTf.getText())) {
                     getCustomerArrayList().get(i).addCredit(Double.parseDouble(JOptionPane.showInputDialog("How much would you like to input?/n" + "Your current credit is R :"+ getCustomerArrayList().get(i).getCredit())));
                     flag = true;
                     
@@ -212,23 +312,40 @@ public class RentMovie extends javax.swing.JFrame {
             
         }
         
-        
+        */
         
         
         
     }//GEN-LAST:event_addCreditBtnActionPerformed
 
     private void viewAvailableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAvailableBtnActionPerformed
+        
         String textPlaceholder = "";
         textArea.setText(null);
+        boolean flag;
+            
+        ArrayList<Dvd> dvdCopy = new ArrayList();
+        
+        for (int i = 0; i < getDvdArrayList().size(); i++) {
+            dvdCopy.add(getDvdArrayList().get(i));
+        }
         
             for (int i = 0; i < getDvdArrayList().size(); i++) {
-        
-                if (getDvdArrayList().get(i).isAvailableForRent()) {
+                for (int j = 0; j < getRentalArrayList().size(); j++) {
+                    if (getDvdArrayList().get(i).getDvdNumber() == getRentalArrayList().get(j).getDvdNumber()) {
+                        dvdCopy.remove(i);
+                    }
+                    
+                }
+                    
                 
-                    textPlaceholder = textPlaceholder + getDvdArrayList().get(i).toString() + "\n \n";
+            }
+        for (int i = 0; i < dvdCopy.size(); i++) {
+            
+            textPlaceholder = textPlaceholder + dvdCopy.get(i).toString() + "\n \n";
+            
         }
-        }
+
             textArea.setText(textPlaceholder);
         
     }//GEN-LAST:event_viewAvailableBtnActionPerformed
@@ -241,12 +358,20 @@ public class RentMovie extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCreditBtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextField customerPhoneNumberTf;
+    private javax.swing.JTextField customerPrimaryKeyTf;
+    private javax.swing.JComboBox<String> dayComboBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> monthComboBox;
     private javax.swing.JButton rentBtn;
     private javax.swing.JComboBox<String> selectMovieComboBox;
     private javax.swing.JTextArea textArea;
     private javax.swing.JButton viewAvailableBtn;
+    private javax.swing.JComboBox<String> yearComboBox;
     // End of variables declaration//GEN-END:variables
 }

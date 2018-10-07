@@ -14,7 +14,6 @@ import java.util.ArrayList;
  */
 public class DeleteGui extends javax.swing.JFrame {
 
-ArrayList<Dvd> test = new ArrayList();
     
     /**
      * Creates new form DeleteGui
@@ -34,7 +33,7 @@ ArrayList<Dvd> test = new ArrayList();
         customerComboBox.removeAllItems();
         
         for (int i = 0; i < getCustomerArrayList().size(); i++) {
-            customerComboBox.addItem(customersArrayList.get(i).getPhoneNumber());
+            customerComboBox.addItem(Integer.toString(customersArrayList.get(i).getCustNumber()));
             }
 
     }
@@ -171,11 +170,11 @@ ArrayList<Dvd> test = new ArrayList();
     private void deleteCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustomerBtnActionPerformed
         
         for (int i = 0; i < getCustomerArrayList().size(); i++) {
-            if (getCustomerArrayList().get(i).getPhoneNumber().equalsIgnoreCase(customerComboBox.getSelectedItem().toString())) {
+            if (Integer.toString(getCustomerArrayList().get(i).getCustNumber()).equalsIgnoreCase(customerComboBox.getSelectedItem().toString())) {
                 deleteCustomer(i);
                 customerComboBox.removeAllItems();
                 for (int j = 0; j < getCustomerArrayList().size(); j++) {
-                    customerComboBox.addItem(getCustomerArrayList().get(j).getPhoneNumber());
+                    customerComboBox.addItem(Integer.toString(getCustomerArrayList().get(j).getCustNumber()));
                     
                 }
             }
