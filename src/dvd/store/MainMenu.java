@@ -85,7 +85,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        sortedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Movies", "Available Movies", "Customers" }));
+        sortedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Movies", "Available Movies", "Customers", "Rentals" }));
 
         listMovieBtn.setText("List movies that starts with...");
         listMovieBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -170,15 +170,15 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AddGui().setVisible(true);
             }
         });
-    }                                      
+    }//GEN-LAST:event_addBtnActionPerformed
 
-    private void listMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void listMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMovieBtnActionPerformed
         
         textArea.setText(null);
         
@@ -193,36 +193,36 @@ public class MainMenu extends javax.swing.JFrame {
             }
         }
         
-    }                                            
+    }//GEN-LAST:event_listMovieBtnActionPerformed
 
-    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
        System.exit(0);
-    }                                       
+    }//GEN-LAST:event_exitBtnActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DeleteGui().setVisible(true);
             }
         });
-    }                                         
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void rentMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void rentMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentMovieBtnActionPerformed
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RentMovie().setVisible(true);
             }
         });
-    }                                            
+    }//GEN-LAST:event_rentMovieBtnActionPerformed
 
-    private void returnMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void returnMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnMovieBtnActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ReturnMovieGui().setVisible(true);
             }
         });
-    }                                              
+    }//GEN-LAST:event_returnMovieBtnActionPerformed
 
     private void sortBtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
        

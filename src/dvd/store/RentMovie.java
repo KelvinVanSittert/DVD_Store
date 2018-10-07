@@ -6,6 +6,7 @@
 package dvd.store;
 import static dvd.store.DVDStore.*;
 import javax.swing.JOptionPane;
+import static dvd.store.ServerProxy.InstertRental;
 import java.util.*;
 /**
  *
@@ -13,7 +14,6 @@ import java.util.*;
  */
 public class RentMovie extends javax.swing.JFrame {
 
-    ServerProxy proxy;
     /**
      * Creates new form RentMovie
      */
@@ -232,7 +232,9 @@ public class RentMovie extends javax.swing.JFrame {
         
         //int  rentalNumber, String dateRented, int custNumber , int dvdNumber
         boolean validatedDVD = false;
+        double custCredit = 0;
         boolean validatedCustomer = false;
+        double cost = 0;
         int storedDVDNum = 0;
         int rentalPrimaryKey = Integer.parseInt(JOptionPane.showInputDialog("Please enter primary key for rental"));
         boolean unique = true;
@@ -255,6 +257,7 @@ public class RentMovie extends javax.swing.JFrame {
         for (int i = 0; i < getCustomerArrayList().size(); i++) {
             if (Integer.toString(getCustomerArrayList().get(i).getCustNumber()).equals(customerPrimaryKeyTf.getText())) {
                 if (getCustomerArrayList().get(i).canRent()) {
+                    custCredit = getCustomerArrayList().get(i).getCredit();
                     validatedCustomer = true;
                     storedCustomerNum = Integer.parseInt(customerPrimaryKeyTf.getText());
                 }else{
@@ -270,16 +273,21 @@ public class RentMovie extends javax.swing.JFrame {
             
             if (getDVDArrayList().get(i).getTitle().equals(movieSelected)) {
                 dvdPrimaryKey = getDVDArrayList().get(i).getDVDNumber();
+                cost = getDVDArrayList().get(i).getPrice();
                 validatedDVD = true;
                 if (validatedCustomer) {
                     getDVDArrayList().get(i).setAvailable(false);
                 }
             }
         }
-        
+        double custCreditAfter = custCredit - cost;
         if (validatedDVD && validatedCustomer) {
+            if (custCreditAfter < 0) {
+            
             int rentalKey = rentalPrimaryKey;
-            newRentalArrayList.add(new Rental(rentalKey, dateRented, customerPrimaryKey, dvdPrimaryKey));
+            Rental newRental = new Rental(rentalKey, dateRented, customerPrimaryKey, dvdPrimaryKey);
+                    
+            newRentalArrayList.add(newRental);
             setRentalArrayList(newRentalArrayList);
             for (int i = 0; i < getCustomerArrayList().size(); i++) {
                 if (getCustomerArrayList().get(i).getCustNumber() == storedCustomerNum) {
@@ -287,6 +295,10 @@ public class RentMovie extends javax.swing.JFrame {
                 }
             }
             JOptionPane.showMessageDialog(null, "Success!");
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Needs more funds");
+            
         }
         
         selectMovieComboBox.removeAllItems();
@@ -297,8 +309,8 @@ public class RentMovie extends javax.swing.JFrame {
                 selectMovieComboBox.addItem(getDVDArrayList().get(i).getTitle());
             }
         }
-
         }
+        
         
         
         /*boolean movieReady = false;
@@ -350,7 +362,7 @@ public class RentMovie extends javax.swing.JFrame {
             if (customerPrimaryKey == getCustomerArrayList().get(i).getCustNumber()) {
                 double addAmount = Double.parseDouble(JOptionPane.showInputDialog("How much do you want to add?"));
                 getCustomerArrayList().get(i).setCredit(getCustomerArrayList().get(i).getCredit() + addAmount);
-                proxy.UpdateCustomer(getCustomerArrayList().get(i));
+                
             }else{
                 JOptionPane.showMessageDialog(null,"That customer does not exist");
                 customerPrimaryKeyTf.setText("");
