@@ -6,9 +6,9 @@
 package dvd.store;
 
 import static dvd.store.DVDStore.getCustomerArrayList;
-import static dvd.store.DVDStore.getDvdArrayList;
+import static dvd.store.DVDStore.getDVDArrayList;
 import static dvd.store.DVDStore.newCustomer;
-import static dvd.store.DVDStore.newDvd;
+import static dvd.store.DVDStore.newDVD;
 import javax.swing.JOptionPane;
 
 
@@ -228,13 +228,13 @@ public class AddGui extends javax.swing.JFrame {
 
     private void submitMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {                                               
     
-        if (getDvdArrayList().size() > 9) {
+        if (getDVDArrayList().size() > 9) {
             JOptionPane.showMessageDialog(null, "You can only store up to 10 Dvd's");
         }else{
   
          //public DVD(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
     DVD dvd = new DVD(Integer.parseInt(JOptionPane.showInputDialog("PLEASE ENTER PRIMARY KEY")), movieTitleTf.getText(), addMovieCombo.getSelectedIndex()+1, newReleaseCheckBox.isSelected(), true);
-    newDvd(dvd);
+    newDVD(dvd);
         }
     movieTitleTf.setText(null);
         
