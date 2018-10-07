@@ -246,7 +246,8 @@ public class AddGui extends javax.swing.JFrame {
         if (Double.parseDouble(creditTf.getText()) > 99 && phoneNumberTf.getText().length()== 10) {
             //int custNumber, String fName, String lName, String phone, double credAmt, boolean can
             Customer customer = new Customer(Integer.parseInt(JOptionPane.showInputDialog("Please enter primary key")),firstNameTf.getText(), surnameTf.getText(), phoneNumberTf.getText(), Double.parseDouble(creditTf.getText()), true);
-            newCustomer(customer);
+            //newCustomer(customer);
+            ServerProxy.InstertCustomer(customer);
         }else{
             JOptionPane.showMessageDialog(null, "Please enter a valid phone number and more than R100 credit");
         }
@@ -255,6 +256,8 @@ public class AddGui extends javax.swing.JFrame {
     surnameTf.setText(null);
     phoneNumberTf.setText(null);
     creditTf.setText("100");
+    
+    
     }                                                 
 
     private void addMovieComboActionPerformed(java.awt.event.ActionEvent evt) {                                              

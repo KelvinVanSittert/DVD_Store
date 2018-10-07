@@ -26,7 +26,7 @@ public class ServerProxy {
         try
         {
             // Create socket
-            server = new Socket("10.0.0.7", 12345);
+            server = new Socket("127.0.0.1", 12345);
         }
         catch (IOException ioe)
         {
@@ -60,6 +60,40 @@ public class ServerProxy {
             in.close();
             server.close();        
         }
+        catch (IOException ioe)
+        {
+            System.out.println("IO Exception: " + ioe.getMessage());
+        }
+        catch (ClassNotFoundException cnfe)
+        {
+            System.out.println("Class not found: " + cnfe.getMessage());
+        }
+    }
+    
+        public static void InstertCustomer(Customer customer)
+    {
+        try
+        {        
+            // Step 1: create channels
+            ObjectOutputStream out = new ObjectOutputStream(server.getOutputStream());
+            out.flush();
+            ObjectInputStream in = new ObjectInputStream(server.getInputStream());
+            String updateStmt = "INSERT INTO Customers(custNumber, firstName, surname, phoneNum ,credit, canRent)" 
+                    + " VALUES (1, kelvin, vans, 2121212121, 20, true)";
+                   
+            // Step 2: communicate
+            Message msg = new Message(customer, Message.Action.Insert, Message.Target.Customer, updateStmt);
+            out.writeObject(msg);
+            out.flush();
+            String response = (String)in.readObject();
+            System.out.println("From SERVER>> " + response);
+            
+            // Step 3: close down
+            out.close();
+            in.close();
+            server.close();        
+        }
+        
         catch (IOException ioe)
         {
             System.out.println("IO Exception: " + ioe.getMessage());
