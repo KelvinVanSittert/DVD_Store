@@ -6,7 +6,7 @@
 package dvd.store;
 
 import static dvd.store.DVDStore.getCustomerArrayList;
-import static dvd.store.DVDStore.getDvdArrayList;
+import static dvd.store.DVDStore.getDVDArrayList;
 import static dvd.store.DVDStore.getRentalArrayList;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,13 +20,14 @@ public class MainMenu extends javax.swing.JFrame {
     
     
     
-
+    ServerProxy proxy;
     /**
      * Creates new form Gui
      */
     public MainMenu() {
         
         initComponents();
+        proxy = new ServerProxy();
     }
 
     /**
@@ -184,10 +185,10 @@ public class MainMenu extends javax.swing.JFrame {
         char startingMovieLetter = JOptionPane.showInputDialog("Enter what letter the movie starts with").charAt(0);
         System.out.println(startingMovieLetter);
         
-        for (int i = 0; i < getDvdArrayList().size(); i++) {
-            if (startingMovieLetter == getDvdArrayList().get(i).getTitle().charAt(0)) {
+        for (int i = 0; i < getDVDArrayList().size(); i++) {
+            if (startingMovieLetter == getDVDArrayList().get(i).getTitle().charAt(0)) {
                 
-                textArea.setText(textArea.getText() + getDvdArrayList().get(i).getTitle() + "\n \n");
+                textArea.setText(textArea.getText() + getDVDArrayList().get(i).getTitle() + "\n \n");
                 
             }
         }
@@ -232,9 +233,9 @@ public class MainMenu extends javax.swing.JFrame {
             textPlaceholder = "";
             textArea.setText(null);
             
-            for (int i = 0; i < getDvdArrayList().size(); i++) {
+            for (int i = 0; i < getDVDArrayList().size(); i++) {
                 
-                textPlaceholder = textPlaceholder + getDvdArrayList().get(i).toString() + "\n \n";
+                textPlaceholder = textPlaceholder + getDVDArrayList().get(i).toString() + "\n \n";
                 
             }
             
@@ -247,15 +248,15 @@ public class MainMenu extends javax.swing.JFrame {
                     textPlaceholder = "";
                     textArea.setText(null);
             
-            ArrayList<Dvd> dvdCopy = new ArrayList();
+            ArrayList<DVD> dvdCopy = new ArrayList();
         
-            for (int i = 0; i < getDvdArrayList().size(); i++) {
-                dvdCopy.add(getDvdArrayList().get(i));
+            for (int i = 0; i < getDVDArrayList().size(); i++) {
+                dvdCopy.add(getDVDArrayList().get(i));
             }
             
-                for (int i = 0; i < getDvdArrayList().size(); i++) {
+                for (int i = 0; i < getDVDArrayList().size(); i++) {
                     for (int j = 0; j < getRentalArrayList().size(); j++) {
-                        if (getDvdArrayList().get(i).getDvdNumber() == getRentalArrayList().get(j).getDvdNumber()) {
+                        if (getDVDArrayList().get(i).getDVDNumber() == getRentalArrayList().get(j).getDVDNumber()) {
                         dvdCopy.remove(i);
                         }
                     

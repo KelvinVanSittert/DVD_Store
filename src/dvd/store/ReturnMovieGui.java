@@ -25,25 +25,25 @@ public class ReturnMovieGui extends javax.swing.JFrame {
         movieComboBox.removeAllItems();
         movieComboBox.addItem("Select movie to return");
         
-        ArrayList<Dvd> dvdCopy = new ArrayList();
-            for (int i = 0; i < getDvdArrayList().size(); i++) {
-                dvdCopy.add(getDvdArrayList().get(i));
+        ArrayList<DVD> dvdCopy = new ArrayList();
+            for (int i = 0; i < getDVDArrayList().size(); i++) {
+                dvdCopy.add(getDVDArrayList().get(i));
             }
            
-        ArrayList<Dvd> rentedDvd = new ArrayList();
+        ArrayList<DVD> rentedDVD = new ArrayList();
                 
-                for (int j = 0; j < getDvdArrayList().size(); j++) {
+                for (int j = 0; j < getDVDArrayList().size(); j++) {
                     for (int k = 0; k < getRentalArrayList().size(); k++) {
-                        if (getDvdArrayList().get(j).getDvdNumber() == getRentalArrayList().get(k).getDvdNumber()) {
-                            rentedDvd.add(getDvdArrayList().get(j));
+                        if (getDVDArrayList().get(j).getDVDNumber() == getRentalArrayList().get(k).getDVDNumber()) {
+                            rentedDVD.add(getDVDArrayList().get(j));
                         }
                     
                     }
                 
                 }
                 
-                for (int i = 0; i < rentedDvd.size(); i++) {
-                    movieComboBox.addItem(rentedDvd.get(i).getTitle());
+                for (int i = 0; i < rentedDVD.size(); i++) {
+                    movieComboBox.addItem(rentedDVD.get(i).getTitle());
         }
             
 
@@ -70,6 +70,9 @@ public class ReturnMovieGui extends javax.swing.JFrame {
         monthComboBox = new javax.swing.JComboBox<>();
         yearComboBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        priceToPayLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -107,6 +110,12 @@ public class ReturnMovieGui extends javax.swing.JFrame {
 
         jLabel5.setText("20");
 
+        jLabel6.setText("Fine to pay: ");
+
+        priceToPayLabel.setText("0");
+
+        jLabel8.setText("R");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,13 +127,22 @@ public class ReturnMovieGui extends javax.swing.JFrame {
                     .addComponent(returnMovieBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                     .addComponent(movieComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(jLabel6)
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(priceToPayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(81, 81, 81)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -155,9 +173,14 @@ public class ReturnMovieGui extends javax.swing.JFrame {
                     .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(priceToPayLabel)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(returnMovieBtn)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(backBtn)
                 .addGap(19, 19, 19))
         );
@@ -177,13 +200,19 @@ public class ReturnMovieGui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select a movie to return");
             
         }else{
-            for (int i = 0; i < getDvdArrayList().size(); i++) {
+            for (int i = 0; i < getDVDArrayList().size(); i++) {
                 
-                if (getDvdArrayList().get(i).getTitle().equals(movieComboBox.getSelectedItem())) {
+                if (getDVDArrayList().get(i).getTitle().equals(movieComboBox.getSelectedItem())) {
                     for (int j = 0; j < getRentalArrayList().size(); j++) {
-                        if (getDvdArrayList().get(i).getDvdNumber() == getRentalArrayList().get(j).getDvdNumber()) {
+                        if (getDVDArrayList().get(i).getDVDNumber() == getRentalArrayList().get(j).getDVDNumber()) {
                             getRentalArrayList().get(j).setDateReturned(dateReturned);
-                            System.out.println(getRentalArrayList().get(j).getTotalPenaltyCost());
+                            priceToPayLabel.setText(Double.toString(getRentalArrayList().get(j).getTotalPenaltyCost()));
+                            getDVDArrayList().get(i).setAvailable(true);
+                            for (int k = 0; k < getCustomerArrayList().size(); k++) {
+                                if (getCustomerArrayList().get(k).getCustNumber() == getRentalArrayList().get(j).getCustNumber()) {
+                                    getCustomerArrayList().get(k).setCanRent(true);
+                                }
+                            }
                             getRentalArrayList().remove(j);
                             JOptionPane.showMessageDialog(null, "Success!");
                         }
@@ -192,18 +221,42 @@ public class ReturnMovieGui extends javax.swing.JFrame {
                     
                 }
             }
+        }
         
+        movieComboBox.removeAllItems();
+        movieComboBox.addItem("Select movie to return");
+        
+        ArrayList<DVD> dvdCopy = new ArrayList();
+            for (int i = 0; i < getDVDArrayList().size(); i++) {
+                dvdCopy.add(getDVDArrayList().get(i));
+            }
+           
+        ArrayList<DVD> rentedDVD = new ArrayList();
+                
+                for (int j = 0; j < getDVDArrayList().size(); j++) {
+                    for (int k = 0; k < getRentalArrayList().size(); k++) {
+                        if (getDVDArrayList().get(j).getDVDNumber() == getRentalArrayList().get(k).getDVDNumber()) {
+                            rentedDVD.add(getDVDArrayList().get(j));
+                        }
+                    
+                    }
+                
+                }
+                
+                for (int i = 0; i < rentedDVD.size(); i++) {
+                    movieComboBox.addItem(rentedDVD.get(i).getTitle());
+        }
         /*
         if (movieComboBox.getSelectedItem().equals("Select movie to return")) {
             
             JOptionPane.showMessageDialog(null, "Please select a movie to return");
             
         }else{
-            for (int i = 0; i < getDvdArrayList().size(); i++) {
+            for (int i = 0; i < getDVDArrayList().size(); i++) {
                 
-                if (getDvdArrayList().get(i).getTitle().equals(movieComboBox.getSelectedItem())) {
+                if (getDVDArrayList().get(i).getTitle().equals(movieComboBox.getSelectedItem())) {
                     
-                    getDvdArrayList().get(i).setAvailableForRent(true);
+                    getDVDArrayList().get(i).setAvailableForRent(true);
                     
                     for (int j = 0; j < getCustomerArrayList().size(); j++) {
                         
@@ -220,7 +273,7 @@ public class ReturnMovieGui extends javax.swing.JFrame {
             }
         }
         */
-        }
+        
     }//GEN-LAST:event_returnMovieBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -241,8 +294,11 @@ public class ReturnMovieGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JComboBox<String> monthComboBox;
     private javax.swing.JComboBox<String> movieComboBox;
+    private javax.swing.JLabel priceToPayLabel;
     private javax.swing.JButton returnMovieBtn;
     private javax.swing.JComboBox<String> yearComboBox;
     // End of variables declaration//GEN-END:variables
