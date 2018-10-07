@@ -70,7 +70,7 @@ public class ServerProxy {
         }
     }
     
-    public static ArrayList<DVD> GetDvds(){
+    public static ArrayList<DVD> GetDVDs(){
         ArrayList<DVD> dvds = new ArrayList<DVD>();
         try
         {        

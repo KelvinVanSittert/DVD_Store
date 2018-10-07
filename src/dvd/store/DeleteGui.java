@@ -7,6 +7,7 @@ package dvd.store;
 
 import static dvd.store.DVDStore.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,10 +23,10 @@ public class DeleteGui extends javax.swing.JFrame {
         
         initComponents();
         
-        ArrayList<DVD> dvdsArrayList = new ArrayList(getDvdArrayList());
+        ArrayList<DVD> dvdsArrayList = new ArrayList(getDVDArrayList());
         movieComboBox.removeAllItems();
         
-        for (int i = 0; i < getDvdArrayList().size(); i++) {
+        for (int i = 0; i < getDVDArrayList().size(); i++) {
             movieComboBox.addItem(dvdsArrayList.get(i).getTitle());
             }
 
@@ -147,15 +148,20 @@ public class DeleteGui extends javax.swing.JFrame {
 
     private void deleteMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMovieBtnActionPerformed
         
-        for (int i = 0; i < getDvdArrayList().size(); i++) {
+        for (int i = 0; i < getDVDArrayList().size(); i++) {
             
-            if (getDvdArrayList().get(i).getTitle().equalsIgnoreCase(movieComboBox.getSelectedItem().toString())) {
-                deleteDvd(i);
+            if (getDVDArrayList().get(i).getTitle().equalsIgnoreCase(movieComboBox.getSelectedItem().toString())) {
+                if (getDVDArrayList().get(i).isAvailable()) {
+                deleteDVD(i);
                 movieComboBox.removeAllItems();
                 
-                for (int a = 0; a < getDvdArrayList().size(); a++) {
-            movieComboBox.addItem(getDvdArrayList().get(a).getTitle());
-            }
+                for (int a = 0; a < getDVDArrayList().size(); a++) {
+                movieComboBox.addItem(getDVDArrayList().get(a).getTitle());
+                }
+                
+                }else{
+                    JOptionPane.showMessageDialog(null, "You cant delete this movie, it is being rented out at the moment");
+                }
             }
             
         }
@@ -171,11 +177,16 @@ public class DeleteGui extends javax.swing.JFrame {
         
         for (int i = 0; i < getCustomerArrayList().size(); i++) {
             if (Integer.toString(getCustomerArrayList().get(i).getCustNumber()).equalsIgnoreCase(customerComboBox.getSelectedItem().toString())) {
+                if (getCustomerArrayList().get(i).canRent()) {
                 deleteCustomer(i);
                 customerComboBox.removeAllItems();
                 for (int j = 0; j < getCustomerArrayList().size(); j++) {
-                    customerComboBox.addItem(Integer.toString(getCustomerArrayList().get(j).getCustNumber()));
+                customerComboBox.addItem(Integer.toString(getCustomerArrayList().get(j).getCustNumber()));
                     
+                }
+                        
+                }else{
+                    JOptionPane.showMessageDialog(null, "You cant delete this customer, they are renting at the moment");
                 }
             }
         }

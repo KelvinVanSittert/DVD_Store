@@ -18,7 +18,7 @@ public class Message implements Serializable {
     private ArrayList<DVD> DVDs;
     private ArrayList<Rental> Rentals;
     private Customer Customer;
-    private DVD Dvd;
+    private DVD DVD;
     private Rental Rental;
     private Action ActionToPerform;
     private Target TargetToPerformActionTo;
@@ -59,7 +59,7 @@ public class Message implements Serializable {
     }
     
     public Message(DVD dvd, Action action, Target target, String statement ){
-        this.Dvd = dvd; 
+        this.DVD = dvd; 
         this.ActionToPerform = action;
         this.TargetToPerformActionTo = target;
         this.Statement = statement;
@@ -76,7 +76,7 @@ public class Message implements Serializable {
     public ArrayList<DVD> getDVDs() { return DVDs;};
     public ArrayList<Rental> getRentals() { return Rentals;};
     public Customer getCustomer() { return Customer; }
-    public DVD getDvd() { return Dvd; }
+    public DVD getDVD() { return DVD; }
     public Rental getRental() { return Rental; }
     public Action getAction() { return ActionToPerform; }
     public Target getTarget() { return TargetToPerformActionTo; }

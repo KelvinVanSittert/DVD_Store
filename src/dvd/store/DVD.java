@@ -34,7 +34,7 @@ public class DVD implements Serializable
     public DVD(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
 
     {
-        setDvdNumber(dvdNumber);
+        setDVDNumber(dvdNumber);
         setTitle(title);
         setCategory(category);
         setRelease(newRelease);
@@ -42,7 +42,7 @@ public class DVD implements Serializable
     }
     
     // set methods
-    public void setDvdNumber(int dvdNumber)
+    public void setDVDNumber(int dvdNumber)
     {
         this.dvdNumber = dvdNumber;
     }
@@ -98,7 +98,7 @@ public class DVD implements Serializable
     }
     
     //get methods
-    public int getDvdNumber()
+    public int getDVDNumber()
     {
         return dvdNumber;
     }    
@@ -131,6 +131,6 @@ public class DVD implements Serializable
     @Override 
     public String toString()
     {
-        return String.format("Dvd number: %-8dTitle: %-30sCategory:%-12sPrice:R%.2f\nNew Release:%b\tAvailable:%b\n", dvdNumber, title,category,price,newRelease,availableForRent);
+        return String.format("DVD number: %-8dTitle: %-30sCategory:%-12sPrice:R%.2f\nNew Release:%b\tAvailable:%b\n", dvdNumber, title,category,price,newRelease,availableForRent);
     }
 }
