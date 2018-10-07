@@ -13,7 +13,6 @@ import java.util.*;
  */
 public class RentMovie extends javax.swing.JFrame {
 
-    ServerProxy proxy;
     /**
      * Creates new form RentMovie
      */
@@ -350,7 +349,7 @@ public class RentMovie extends javax.swing.JFrame {
             if (customerPrimaryKey == getCustomerArrayList().get(i).getCustNumber()) {
                 double addAmount = Double.parseDouble(JOptionPane.showInputDialog("How much do you want to add?"));
                 getCustomerArrayList().get(i).setCredit(getCustomerArrayList().get(i).getCredit() + addAmount);
-                proxy.UpdateCustomer(getCustomerArrayList().get(i));
+                
             }else{
                 JOptionPane.showMessageDialog(null,"That customer does not exist");
                 customerPrimaryKeyTf.setText("");

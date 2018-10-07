@@ -20,14 +20,13 @@ public class MainMenu extends javax.swing.JFrame {
     
     
     
-    ServerProxy proxy;
+
     /**
      * Creates new form Gui
      */
     public MainMenu() {
         
         initComponents();
-        proxy = new ServerProxy();
     }
 
     /**
