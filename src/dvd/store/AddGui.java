@@ -9,8 +9,6 @@ import static dvd.store.DVDStore.getCustomerArrayList;
 import static dvd.store.DVDStore.getDVDArrayList;
 import static dvd.store.DVDStore.newCustomer;
 import static dvd.store.DVDStore.newDVD;
-import static dvd.store.ServerProxy.InstertCustomer;
-import static dvd.store.ServerProxy.InstertDvd;
 import javax.swing.JOptionPane;
 
 
@@ -245,7 +243,10 @@ public class AddGui extends javax.swing.JFrame {
             //public DVD(int dvdNumber, String title, int category, boolean newRelease, boolean avail)
             DVD dvd = new DVD(primaryKey, movieTitleTf.getText(), addMovieCombo.getSelectedIndex()+1, newReleaseCheckBox.isSelected(), true);
             newDVD(dvd);
-            InstertDvd(dvd);
+           // try {
+                    ServerProxy.InstertDvd(dvd);
+             //   } catch (Exception e) {
+              //  }
             JOptionPane.showMessageDialog(null, "Success!");
             
         }else{
@@ -276,7 +277,9 @@ public class AddGui extends javax.swing.JFrame {
                 //int custNumber, String fName, String lName, String phone, double credAmt, boolean can
             Customer customer = new Customer(primaryKey,firstNameTf.getText(), surnameTf.getText(), phoneNumberTf.getText(), Double.parseDouble(creditTf.getText()), true);
             newCustomer(customer);
-            InstertCustomer(customer);
+                System.out.println(customer.toString());
+                    ServerProxy.InstertCustomer(customer);
+                
             JOptionPane.showMessageDialog(null, "Success!");
             }else{
                 JOptionPane.showMessageDialog(null, "Please enter a valid firstname and surname (Less than 30 characters)");

@@ -27,6 +27,7 @@ public class ServerProxy {
         {
             // Create socket
             server = new Socket("127.0.0.1", 12345);
+            System.out.println("Started ip stuff");
         }
         catch (IOException ioe)
         {

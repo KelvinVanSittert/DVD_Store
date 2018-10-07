@@ -84,7 +84,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        sortedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Movies", "Available Movies", "Customers" }));
+        sortedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Movies", "Available Movies", "Customers", "Rentals" }));
 
         listMovieBtn.setText("List movies that starts with...");
         listMovieBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -281,6 +281,19 @@ public class MainMenu extends javax.swing.JFrame {
             for (int i = 0; i < getCustomerArrayList().size(); i++) {    
                     
                     textPlaceholder = textPlaceholder + getCustomerArrayList().get(i).toString() + "\n \n";
+        }
+            textArea.setText(textPlaceholder);
+            
+        }
+        
+        if (sortedComboBox.getSelectedItem().equals("Rentals")) {
+            
+            textPlaceholder = "";
+            textArea.setText(null);
+            
+            for (int i = 0; i < getRentalArrayList().size(); i++) {    
+                    
+                    textPlaceholder = textPlaceholder + getRentalArrayList().get(i).toString() + "\n \n";
         }
             textArea.setText(textPlaceholder);
             
